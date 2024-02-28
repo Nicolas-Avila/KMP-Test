@@ -32,7 +32,7 @@ object OptionTab: Tab {
             return remember {
                 TabOptions(
                     index = 1u,
-                    title = "Option",
+                    title = "Opciones",
                     icon = icon
                 )
             }

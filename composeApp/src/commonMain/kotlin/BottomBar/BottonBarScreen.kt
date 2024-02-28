@@ -19,7 +19,6 @@ import cafe.adriel.voyager.navigator.tab.TabNavigator
 class BottonBarScreen : Screen{
     @Composable
     override fun Content() {
-        val navigator = LocalNavigator.currentOrThrow
 
         TabNavigator(
             HomeTab,
@@ -32,29 +31,33 @@ class BottonBarScreen : Screen{
         ){
             Scaffold (
                 topBar = {
-                    Button(onClick = {navigator.pop()}){ Text("volver")}
-                   // TopAppBar (title = {Text(it.current.options.title)})
+                   //Button(onClick = {navigator.pop()}){ Text("volver")}
+                   TopAppBar (title = {Text(it.current.options.title )})
                 },
                 bottomBar = {
                     BottomNavigation {
                         val tabNavigator = LocalTabNavigator.current
-
+                        //Inicio
                         BottomNavigationItem(
                             selected = tabNavigator.current.key == HomeTab.key,
                             label = { Text(HomeTab.options.title)},
                             icon = {Icon(painter = HomeTab.options.icon!!, contentDescription = null)},
                             onClick = {tabNavigator.current = HomeTab}
                         )
-
-
-
+                        //Favorito
+                        BottomNavigationItem(
+                            selected = tabNavigator.current.key == FavoriteTab.key,
+                            label = { Text(FavoriteTab.options.title)},
+                            icon = {Icon(painter = FavoriteTab.options.icon!!, contentDescription = null)},
+                            onClick = {tabNavigator.current = FavoriteTab}
+                        )
+                        //Opciones
                         BottomNavigationItem(
                             selected = tabNavigator.current.key == OptionTab.key,
                             label = { Text(OptionTab.options.title)},
                             icon = {Icon(painter = OptionTab.options.icon!!, contentDescription = null)},
                             onClick = {tabNavigator.current = OptionTab}
                         )
-
                     }
 
                 },

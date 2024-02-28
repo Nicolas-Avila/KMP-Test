@@ -23,7 +23,7 @@ import cafe.adriel.voyager.transitions.SlideTransition
 @Composable
 fun App() {
     MaterialTheme {
-        Navigator(screen = MainScreen()){navigator ->
+        Navigator(screen = BottonBarScreen()){navigator ->
             SlideTransition(navigator)
         }
 
@@ -39,7 +39,7 @@ class MainScreen:Screen{
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         Button(onClick = {
             //avanza en la navegacion
-        navigator.push(SecondScreen())
+        //navigator.push(SecondScreen())
         }){
             Text("avanza gil")
         }
@@ -55,21 +55,6 @@ class MainScreen:Screen{
     }
 }
 
-class SecondScreen:Screen {
-    @Composable
-    override fun Content() {
-        val navigator = LocalNavigator.currentOrThrow
-        Column(
-            modifier = Modifier.fillMaxSize().background(androidx.compose.ui.graphics.Color.Black),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text("funciona sos el mejor de tu casa ", fontSize = 25.sp, color = androidx.compose.ui.graphics.Color.White)
-            Spacer(modifier = Modifier.height(20.dp))
-            Button(onClick = {navigator.pop()}){Text("volve pamflin", fontSize = 25.sp, color = androidx.compose.ui.graphics.Color.Red)
-            }
-        }
-    }
-}
 
 
 
